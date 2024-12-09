@@ -1,0 +1,264 @@
+s
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cake Room</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #FFB6C1;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .filters {
+            margin: 1rem;
+            text-align: center;
+        }
+        .filters label {
+            margin: 0 1rem;
+            display: inline-block;
+        }
+        #product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+        .card {
+            border: 1px solid #OOOOFF;
+            border-radius: 5px; 
+            overflow: hidden;
+            text-align: center;
+            background-color: #FFFFOO;
+        }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .details {
+            padding: 1rem;
+        }
+        .details h3 {
+            margin: 0.5rem 0;
+        }
+        .details p {
+            margin: 0.3rem 0;
+        }
+        .add-to-cart {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        .add-to-cart:hover {
+            background-color: #45a049;
+        }
+        #about, #contact {
+            display: none;
+            padding: 2rem;
+            text-align: center;
+        }
+        #about img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 1rem;
+        }
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        #contact form input,
+        #contact form textarea,
+        #contact form button {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border: 1px solid #OOOOFF;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a id="home-btn">Home</a></li>
+                <li><a id="about-btn">About Us</a></li>
+                <li><a id="contact-btn">Contact Us</a></li>
+            </ul>
+        </nav>
+        <h1>The Cake Room</h1>
+        <h2>Eggless Cakes</h2>
+        <div class="filters">
+            <label>
+                Category:
+                <select id="category-filter">
+                    <option value="all">All</option>
+                    <option value="fruit">Fruit Cake</option>
+                    <option value="red-vevet">Red Velvet Cake</option>
+                    <option value="coffee">Coffee Cake</option>
+                    <option value="opium">Opium Cake</option>
+                </select>
+            </label>
+            
+            <label>
+                Sort by Price:
+                <select id="price-sort">
+                    <option value="none">None</option>
+                    <option value="low-to-high">Low to High</option>
+                    <option value="high-to-low">High to Low</option>
+                </select>
+            </label>
+            
+            <label>
+                Sort by Rating:
+                <select id="rating-sort">
+                    <option value="none">None</option>
+                    <option value="high-to-low">Highest to Lowest</option>
+                    <option value="low-to-high">Lowest to Highest</option>
+                </select>
+            </label>
+        </div>
+    </header>
+
+    <main id="product-list"></main>
+
+    <section id="about">
+        <h3>About Us</h3>
+        <p>Eggless cakes are cakes that don't cantain eggs, and can be made with a variety of substitutes like mashed bananas, applesauce,vinegar,or baking soda.</p>
+        <img src="https://tse1.mm.bing.net/th?id=OIP.RWcqHujKywHjfR4s09Zw1wAAAA&pid=Api&P=0&h=180" alt="About Us">
+       
+    </section>
+
+    <section id="contact">
+        <h4>Contact Us</h4>
+        <form>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 New Eggless Room</p>
+    </footer>
+
+    <script>
+        const products = [
+            { name: "Fruit Cake", category: " Cake", price: 159, rating: 4.5, image: "https://tse1.mm.bing.net/th?id=OIP.9oIlxcr0OSALkTLL3iV9twHaJQ&pid=Api&P=0&h=180" },
+            { name:"Red Velvet Cake", category: "Cake", price: 200, rating: 4.7, image: "https://tse2.mm.bing.net/th?id=OIP.WteMm-v4_GUswkD3wiw2jwHaHp&pid=Api&P=0&h=180" },
+            { name: "Coffee Cake", category: "Cake", price: 49, rating: 4.2, image: "https://bakewithshivesh.com/wp-content/uploads/2022/01/IMG_5071-scaled.jpg" },
+            { name: "Opium Cake", category: "Cake", price: 397, rating: 4.8, image: "https://tse4.mm.bing.net/th?id=OIP.8LPkbo9i20MTxpSgL9qVMAAAAA&pid=Api&P=0&h=180" },
+            { name: "Coffee Cake", category: "Cake", price: 99, rating: 4.6, image: "https://tse3.mm.bing.net/th?id=OIP.VShpoztoI_fI8F5-7dg51gHaIO&pid=Api&P=0&h=180" },
+            { name: " Fruit Cake",category: "Cake", price: 149, rating: 4.9, image: "https://tse3.mm.bing.net/th?id=OIP._fkOrEDvcNiZXhZ7TcU0pgHaJM&pid=Api&P=0&h=180"}
+        ];
+
+        const productList = document.getElementById("product-list");
+        const categoryFilter = document.getElementById("category-filter");
+        const priceSort = document.getElementById("price-sort");
+        const ratingSort = document.getElementById("rating-sort");
+        const homeBtn = document.getElementById("home-btn");
+        const aboutBtn = document.getElementById("about-btn");
+        const contactBtn = document.getElementById("contact-btn");
+        const aboutSection = document.getElementById("about");
+        const contactSection = document.getElementById("contact");
+
+        function displayProducts(items) {
+            productList.innerHTML = "";
+            items.forEach(product => {
+                const card = document.createElement("div");
+                card.classList.add("card");
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="details">
+                        <h3>${product.name}</h4>
+                        <p>Category: ${product.category}</p>
+                        <p>Price: ₹${product.price}</p>
+                        <p>Rating: ${product.rating} ★</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                `;
+                productList.appendChild(card);
+            });
+        }
+
+        function showSection(section) {
+            productList.style.display = section === "home" ? "grid" : "none";
+            aboutSection.style.display = section === "about" ? "block" : "none";
+            contactSection.style.display = section === "contact" ? "block" : "none";
+        }
+
+        function filterAndSortProducts() {
+            let filteredProducts = [...products];
+            const category = categoryFilter.value;
+
+            // Filter by category
+            if (category !== "all") {
+                filteredProducts = filteredProducts.filter(p => p.category === category);
+            }
+
+            // Sort by price
+            if (priceSort.value === "low-to-high") {
+                filteredProducts.sort((a, b) => a.price - b.price);
+            } else if (priceSort.value === "high-to-low") {
+                filteredProducts.sort((a, b) => b.price - a.price);
+            }
+
+            // Sort by rating
+            if (ratingSort.value === "high-to-low") {
+                filteredProducts.sort((a, b) => b.rating - a.rating);
+            } else if (ratingSort.value === "low-to-high") {
+                filteredProducts.sort((a, b) => a.rating - b.rating);
+            }
+
+            displayProducts(filteredProducts);
+        }
+
+        categoryFilter.addEventListener("change", filterAndSortProducts);
+        priceSort.addEventListener("change", filterAndSortProducts);
+        ratingSort.addEventListener("change", filterAndSortProducts);
+
+        homeBtn.addEventListener("click", () => showSection("home"));
+        aboutBtn.addEventListener("click", () => showSection("about"));
+        contactBtn.addEventListener("click", () => showSection("contact"));
+
+        displayProducts(products); // Show all products initially
+        showSection("home"); // Default section
+    </script>
+</body>
+</html>
